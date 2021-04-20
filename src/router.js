@@ -39,7 +39,7 @@ export default class RouterWrap extends Component {
                             this.props.user ? (alert("You can't login if you are logged in!"),
                                 (<Redirect to="/home"/>)) : (<Login/>)
                         )}/>
-                        <Route path="/home" component={Home} />
+                        <Route path="/home" component={Home} type="private"/>
                         <Route path="/search" component={Search} />
                         <Route path="/viewtrip" component={ViewTrip} />
                         <Route path="/viewmytrips" component={ViewMyTrips} />

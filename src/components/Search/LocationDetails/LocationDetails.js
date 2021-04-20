@@ -8,10 +8,11 @@ import {
     Rating,
     Telephone,
     OpenTimeDetails,
-    CloseDetail
+    CloseDetail,
+    AddPoint,
 } from './LocationDetailsSetting'
 
-const LocationDetails = ({details, closeDetail}) => {
+const LocationDetails = ({details, closeDetail, addPoint}) => {
     const {
         name,
         address,
@@ -33,9 +34,10 @@ const LocationDetails = ({details, closeDetail}) => {
                         {time}
                     </OpenTimeDetails>
                 )}
-                <telephone>telephone: {telephone}</telephone>
+                <Telephone>telephone: {telephone}</Telephone>
                 <br/>
                 <CloseDetail onClick={closeDetail}>Close</CloseDetail>
+                <AddPoint onClick={addPoint}>add point</AddPoint>
             </DetailCard>
         </DetailsWrapper>
     )

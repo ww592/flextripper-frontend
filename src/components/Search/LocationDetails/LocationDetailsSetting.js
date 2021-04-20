@@ -71,6 +71,19 @@ export const CloseDetail = styled.button`
     cursor: pointer;
 `
 
+export const AddPoint = styled.button`
+    font-size: 16px;
+    color: white;
+    margin-top: 14px;
+    width: auto;
+    height: auto;
+    padding: 8px;
+    border: 2px solid white;
+    background-color: orange;
+    border-radius: 8px;
+    cursor: pointer;
+`
+
 export const OpenTimeDetails = styled.div`
     margin-top: 4px;
     font-size: 13px;

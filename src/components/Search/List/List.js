@@ -8,8 +8,8 @@ import {
     ListMenuWrapper
 } from './ListSetting'
 
-const Cards = ({showDetail, icon, name}) => (
-    <Card onClick={showDetail}>
+const Cards = ({listClick, showDetail, icon, name}) => (
+    <Card onClick={listClick}>
         <Icon src={icon} />
         <Name>{name}</Name>
     </Card>
@@ -27,23 +27,24 @@ const ListMenu = ({handleSortByRating, handleSortByPriceLevel, handleSortByUserR
 )
 
 
-const List = ({places, handleSortByRating, handleSortByPriceLevel, handleSortByUserRatings, showDetail}) => (
+const List = ({listClick, places, handleSortByRating, handleSortByPriceLevel, handleSortByUserRatings, showDetail}) => (
     <ListWrapper>
-        <ListMenu 
+        <ListMenu
             handleSortByRating={handleSortByRating}
-            handleSortByPriceLevel={handleSortByPriceLevel}
+            //handleSortByPriceLevel={handleSortByPriceLevel}
             handleSortByUserRatings={handleSortByUserRatings}
         />
         {places.map((place,index)=>{
-        return(
-            <Cards
-                key={index}
-                icon={place.icon}
-                name={place.name}
-                showDetail={()=>{showDetail(place.place_id)}}
-            />
-        )})}
-    </ListWrapper> 
+            return(
+                <Cards
+                    key={index}
+                    icon={place.icon}
+                    name={place.name}
+                    // showDetail={()=>{showDetail(place.place_id)}}
+                    listClick={()=>{listClick(place.place_id)}}
+                />
+            )})}
+    </ListWrapper>
 )
 
 
