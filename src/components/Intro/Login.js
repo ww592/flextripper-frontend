@@ -93,7 +93,6 @@ class Login extends React.Component {
                                         variant="outlined"
                                         onChange={this.handleInput('email')}
                                         value={this.state.email}
-
                                     />
                                 </Paper>
                             </Grid>

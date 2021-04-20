@@ -195,7 +195,7 @@ export default function HomeSearch() {
                                      aria-label="contained primary button group">
                             <StyledButton key="customize"
                                           onClick={handleCust}>
-                                <Link to="/customize"
+                                <Link to="/search"
                                       style={{ textDecoration: 'none', color: 'white' }}>
                                     Start my own trip</Link>
                             </StyledButton>
