@@ -12,7 +12,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import { debounce } from 'lodash';
 import Destination from '../ShowList/Destination';
 import TripList from './TripList';
-import YourTrip from './YourTrip'
+import YourTrip from './YourTrip';
 
 export const Wrapper = styled.div`
   display: flex;

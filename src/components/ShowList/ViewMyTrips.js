@@ -15,6 +15,7 @@ import { Card } from "antd";
 import { Button, ButtonGroup } from "@material-ui/core";
 import Trips from "./Trips";
 import {Link} from "react-router-dom";
+import YourTrip from './YourTrip';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -280,9 +281,9 @@ const ViewTrip = () => {
                         </Grid>
                     </Grid>
 
-                    <Grid item xs={6}>
+                    <Grid item xs={12}>
                         <Grid container>
-                            <Grid item xs={12}>
+                            <div>
                                 <Button>
                                     <Link to="/">Edit the trip</Link>
                                 </Button>
@@ -290,13 +291,12 @@ const ViewTrip = () => {
                                     <header>Trips</header>
                                     <Trips listItems={listItems} className="trips" />
                                 </Card>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Destination />
-                            </Grid>
+                                </div>
+
+
                         </Grid>
                     </Grid>
-
+                    <Destination />
 
                 </Grid>
             </div>
