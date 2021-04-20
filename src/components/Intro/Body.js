@@ -52,10 +52,10 @@ class Body extends Component {
                 </div>
 
                 <div className="bottom">
-                    <div className="title">About us</div>
-                    <div className="content">
-                        Say something
-                    </div>
+                    <h1>About us</h1>
+                    <h2>
+                        An app to plan trips and find amazing places
+                    </h2>
                 </div>
             </div>
                 <Footer />

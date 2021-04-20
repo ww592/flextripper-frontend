@@ -1,5 +1,5 @@
 .body {
-    height: 900px;
+    height: 800px;
 }
 
 .top {
@@ -14,7 +14,7 @@
 }
 
 .bottom {
-    height: 200px;
+    height: 100px;
     padding: 20px;
     color: #453a3a;
 }

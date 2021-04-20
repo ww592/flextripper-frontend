@@ -1,9 +1,13 @@
 @import "./styles/Main1/Body.css";
 @import "./styles/Main1/Login.css";
-@import "styles/Header.css";
-@import "styles/Footer.css";
-@import "styles/App.css";
-@import "styles/Home/Home.css";
+@import "./styles/Main1/Register.css";
+@import "./styles/Header.css";
+@import "./styles/Footer.css";
+@import "./styles/App.css";
+@import "./styles/Home/Home.css";
+@import "./styles/Main2/TripList.css";
+@import "./styles/Main2/ViewMyTrips.css";
+@import "./styles/Main2/YourTrip.css";
 
 body {
   margin: 0;
