@@ -1,0 +1,78 @@
+.App-logo {
+    height: 8vmin;
+    pointer-events: none;
+    margin-left: 10px;
+}
+
+.App-top {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 100vw;
+    color: #d64741;
+    background-color: #f8f8f7;
+    box-shadow: rgb(220, 220, 220) 0 2px 10px;
+}
+.App1 {
+    text-align: center;
+}
+
+.cards {
+    text-align: center;
+    border: 2px solid #ccc;
+    margin-top: 80px;
+    margin-left: 70vw;
+}
+
+.yourtrip {
+    text-align: center;
+    border: 2px solid #ccc;
+    margin-top: 80px;
+    margin-left: 60vw;
+}
+
+.destination {
+    text-align: center;
+    border: 2px solid #ccc;
+    margin-top: 80px;
+    margin-left: 60vw;
+}
+
+.header-link1 {
+    color: orange;
+    margin-left: 60vw;
+}
+
+.header-link2 {
+    color: orange;
+    margin-left: 50px;
+}
+
+.header-link3 {
+    color: orange;
+    margin-left: 50px;
+}
+
+#container {
+    background-color: #eee;
+    width: 300px;
+    padding: 0px;
+}
+.list-item {
+    list-style-type: none;
+    padding: 10px;
+    margin: 2px;
+    color: #eee;
+}
+
+.list-item:hover {
+    background-color: #777;
+}
+
+.list-item-highlighted {
+    background-color: slateblue;
+}
+
+.list-item-normal {
+    background-color: #444;
+}
