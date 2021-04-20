@@ -1,0 +1,22 @@
+.home {
+    height: 800px;
+}
+
+.home-search {
+    padding: 80px;
+}
+
+.btns {
+    padding: 20px;
+    width: auto;
+}
+
+.bottom {
+    padding: 30px;
+    height: 200px;
+
+}
+
+.grid-list {
+    position: relative;
+}

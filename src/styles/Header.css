@@ -1,0 +1,22 @@
+.App-logo {
+    height: 8vmin;
+    pointer-events: none;
+    margin-left: 10px;
+}
+
+.App-header {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 100vw;
+    color: #d64741;
+    background-color: #f8f8f7;
+    box-shadow: rgb(220, 220, 220) 0 2px 10px;
+}
+
+.title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 30px;
+    font-family: Charter;
+}
