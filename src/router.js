@@ -28,7 +28,7 @@ export default class RouterWrap extends Component {
             <div id="router">
                 <HashRouter>
                     <Switch>
-                        <Route path="/flextripper" component={Body} exact onShow={this.showForm}/>
+                        <Route path="/" component={Body} exact onShow={this.showForm}/>
                         <Route path="/register" component={Register}
                                exact render={()=>(
                             this.props.user ? (alert("You can't register if you are logged in!"),

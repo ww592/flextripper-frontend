@@ -32,18 +32,35 @@ class Login extends React.Component {
             password: this.state.password,
         });
 
-        $.ajax({
-            url: '/login.json',
-            data: data,
-            type: 'GET',
-            success: (res) => {
-                console.log(data)
-            },
-            error: (err) => {
-                console.log(err)
+        // $.ajax({
+        //     url: '/login.json',
+        //     data: data,
+        //     type: 'POST',
+        //     success: (res) => {
+        //         console.log(data)
+        //     },
+        //     error: (err) => {
+        //         console.log(err)
+        //     }
+        // });
+
+
+        fetch("http://localhost:8080/login", {
+            headers: {
+                "Authorization": 'Basic ' + window.btoa(this.state.email + ":" + this.state.password)
             }
+        }).then(resp => {
+            console.log(resp);
+            if (resp.ok) {
+                return <Redirect to="/home" />;
+                // this.setState({isLoginSucces: true});
+            } else {
+                // this.setState({isLoginSucces: false});
+            }
+            return resp.text();
         });
-        <Redirect to="/home" />;
+
+
         // axios
         //     .get("http://localhost:8080/user", data)
         //     .then(response => this.setState({
@@ -81,8 +98,7 @@ class Login extends React.Component {
             <div className="login">
                 <Header />
                 <div className="box-container">
-                    <form className={classes.root} noValidate
-                          autoComplete="off">
+                    <form className={classes.root} noValidate autoComplete="off">
                         <Grid container alignItems="center" justify="center" direction="column">
                             <Grid item xs={12}>
                                 <Paper className={classes.paper}>
