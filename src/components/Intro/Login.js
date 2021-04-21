@@ -21,7 +21,6 @@ class Login extends React.Component {
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
-
     }
 
     handleInput(field) {
@@ -43,6 +42,7 @@ class Login extends React.Component {
         //         console.log(err)
         //     }
         // });
+
 
         fetch("http://localhost:8080/login", {
             headers: {
@@ -67,7 +67,6 @@ class Login extends React.Component {
         //     }))
         //     .catch(err => console.log(err));
     };
-
 
     render() {
         const { user } = this.props;
