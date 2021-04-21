@@ -26,35 +26,35 @@ class Login extends React.Component {
     }
 
     /*TEST*/
-    // setUsername(e) {
-    //     e.preventDefault();
-    //     const [username] = this.state.username;
-    //     setSessionCookie({ username });
-    //
-    //     fetch("http://localhost:8080/allcookies", {
-    //         headers: {
-    //             "Authorization": 'Basic ' + window.btoa(this.state.username)
-    //         }
-    //     }).then(resp => {
-    //         console.log(resp);
-    //         if (resp.ok) {
-    //             console.log("cookie:")
-    //             // this.setState({isLoginSucces: true});
-    //         } else {
-    //             // this.setState({isLoginSucces: false});
-    //         }
-    //         return resp.text();
-    //     });
-    // }
+
+    setUsername(e) {
+        e.preventDefault();
+
+        fetch("/auth", {
+            credentials: 'include',
+            // credentials: "same-origin",
+            headers: {
+                // "Authorization": 'Basic ' + window.btoa(this.state.email + ":" + this.state.password)
+            }
+        }).then(resp => {
+            console.log(resp);
+            console.log(document.cookie);
+            if (resp.ok) {
+                console.log("cookie:")
+            } else {
+            }
+            return resp.text();
+        });
+    }
 
     handleInput(field) {
         return (e) => this.setState({ [field]: e.target.value });
     }
 
     handleLogin(e) {
-        const [email] = this.state.email;
+        // const [email] = this.state.email;
         e.preventDefault();
-        setSessionCookie({ email });
+        // setSessionCookie({ email: "test@gmail.com" });
         // $.ajax({
         //     url: '/login.json',
         //     data: data,
@@ -67,7 +67,10 @@ class Login extends React.Component {
         //     }
         // });
 
-        fetch("http://localhost:8080/login", {
+
+        fetch("/login", {
+            credentials: 'include',
+            method: 'GET',
             headers: {
                 "Authorization": 'Basic ' + window.btoa(this.state.email + ":" + this.state.password)
             }
@@ -82,13 +85,6 @@ class Login extends React.Component {
             return resp.text();
         });
 
-
-        // axios
-        //     .get("http://localhost:8080/user", data)
-        //     .then(response => this.setState({
-        //         user: response.data,
-        //     }))
-        //     .catch(err => console.log(err));
     };
 
 
@@ -125,6 +121,7 @@ class Login extends React.Component {
                         <Grid container alignItems="center" justify="center" direction="column">
                             <Grid item xs={12}>
                                 <Paper className={classes.paper}>
+                                    <button type="submit" onClick={this.setUsername}>Add to Session(cookie)</button>
                                     <TextField
                                         required
                                         id="email"
