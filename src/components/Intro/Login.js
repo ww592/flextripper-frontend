@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import Header from "../Header";
 import Footer from "../Footer";
 import TextField from '@material-ui/core/TextField';
 import Grid from "@material-ui/core/Grid";
-import {Button, FormHelperText} from "@material-ui/core";
+import {Button} from "@material-ui/core";
 import {makeStyles, withStyles} from '@material-ui/core/styles';
 import Paper from "@material-ui/core/Paper"
 import axios from "axios";
 import $ from 'jquery';
 import {Redirect} from 'react-router-dom';
+import {setSessionCookie} from './Session';
 
 class Login extends React.Component {
     constructor(props) {
@@ -16,9 +17,11 @@ class Login extends React.Component {
         this.state = {
             email: '',
             password:'',
+            sessionUsername:'',
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
+
     }
 
     handleInput(field) {
@@ -26,12 +29,9 @@ class Login extends React.Component {
     }
 
     handleLogin(e) {
+        const [email] = this.state.email;
         e.preventDefault();
-        const data = JSON.stringify({
-            email: this.state.email,
-            password: this.state.password,
-        });
-
+        setSessionCookie({ email });
         // $.ajax({
         //     url: '/login.json',
         //     data: data,
@@ -44,7 +44,6 @@ class Login extends React.Component {
         //     }
         // });
 
-
         fetch("http://localhost:8080/login", {
             headers: {
                 "Authorization": 'Basic ' + window.btoa(this.state.email + ":" + this.state.password)
@@ -52,7 +51,7 @@ class Login extends React.Component {
         }).then(resp => {
             console.log(resp);
             if (resp.ok) {
-                return <Redirect to="/home" />;
+                this.props.history.push("/home");
                 // this.setState({isLoginSucces: true});
             } else {
                 // this.setState({isLoginSucces: false});
@@ -68,6 +67,7 @@ class Login extends React.Component {
         //     }))
         //     .catch(err => console.log(err));
     };
+
 
     render() {
         const { user } = this.props;
