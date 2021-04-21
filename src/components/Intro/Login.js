@@ -17,19 +17,41 @@ class Login extends React.Component {
         this.state = {
             email: '',
             password:'',
-            sessionUsername:'',
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
+        this.setUsername = this.setUsername.bind(this);
 
+    }
+
+    /*TEST*/
+
+    setUsername(e) {
+        e.preventDefault();
+        const [username] = this.state.username;
+        setSessionCookie({ username });
+
+        fetch("http://localhost:8080/allcookies", {
+            headers: {
+                "Authorization": 'Basic ' + window.btoa(this.state.username)
+            }
+        }).then(resp => {
+            console.log(resp);
+            if (resp.ok) {
+                console.log("cookie:")
+                // this.setState({isLoginSucces: true});
+            } else {
+                // this.setState({isLoginSucces: false});
+            }
+            return resp.text();
+        });
     }
 
     handleInput(field) {
-        return (e) => this.setState({ [field]: e.target.value });
+        return (e) => this.setState({[field]: e.target.value});
     }
-
     handleLogin(e) {
-        const [email] = this.state.email;
+        const [email] = "sessionCookie";
         e.preventDefault();
         setSessionCookie({ email });
         // $.ajax({
@@ -98,10 +120,15 @@ class Login extends React.Component {
             <div className="login">
                 <Header />
                 <div className="box-container">
+
                     <form className={classes.root} noValidate autoComplete="off">
                         <Grid container alignItems="center" justify="center" direction="column">
                             <Grid item xs={12}>
                                 <Paper className={classes.paper}>
+
+                                    <Button type="submit" onClick={this.setUsername}>Add to Session(cookie)</Button>
+
+
                                     <TextField
                                         required
                                         id="email"
