@@ -37,18 +37,33 @@ class Register extends Component {
             password: this.state.password,
         });
 
-        $.ajax({
-            url: '/register.json',
-            data: data,
-            type: 'POST',
-            success: (res) => {
-                console.log(data)
-            },
-            error: (err) => {
-                console.log(err)
+        fetch("http://localhost:8080/register", {
+            headers: {
+                "Authorization": 'Basic ' + window.btoa(this.state.email + ":" + this.state.password + this.state.firstname + this.state.lastname)
             }
+        }).then(resp => {
+            console.log(resp);
+            if (resp.ok) {
+                this.props.history.push("/home");
+                // this.setState({isLoginSucces: true});
+            } else {
+                // this.setState({isLoginSucces: false});
+            }
+            return resp.text();
         });
-        <Redirect to="/home" />;
+
+        // $.ajax({
+        //     url: '/register.json',
+        //     data: data,
+        //     type: 'POST',
+        //     success: (res) => {
+        //         console.log(data)
+        //     },
+        //     error: (err) => {
+        //         console.log(err)
+        //     }
+        // });
+        // <Redirect to="/home" />;
 
         // axios
         //     .post("http://localhost:8080/user", data)

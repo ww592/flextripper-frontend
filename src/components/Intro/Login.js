@@ -26,27 +26,26 @@ class Login extends React.Component {
     }
 
     /*TEST*/
-
-    setUsername(e) {
-        e.preventDefault();
-        const [username] = this.state.username;
-        setSessionCookie({ username });
-
-        fetch("http://localhost:8080/allcookies", {
-            headers: {
-                "Authorization": 'Basic ' + window.btoa(this.state.username)
-            }
-        }).then(resp => {
-            console.log(resp);
-            if (resp.ok) {
-                console.log("cookie:")
-                // this.setState({isLoginSucces: true});
-            } else {
-                // this.setState({isLoginSucces: false});
-            }
-            return resp.text();
-        });
-    }
+    // setUsername(e) {
+    //     e.preventDefault();
+    //     const [username] = this.state.username;
+    //     setSessionCookie({ username });
+    //
+    //     fetch("http://localhost:8080/allcookies", {
+    //         headers: {
+    //             "Authorization": 'Basic ' + window.btoa(this.state.username)
+    //         }
+    //     }).then(resp => {
+    //         console.log(resp);
+    //         if (resp.ok) {
+    //             console.log("cookie:")
+    //             // this.setState({isLoginSucces: true});
+    //         } else {
+    //             // this.setState({isLoginSucces: false});
+    //         }
+    //         return resp.text();
+    //     });
+    // }
 
     handleInput(field) {
         return (e) => this.setState({ [field]: e.target.value });

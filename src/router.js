@@ -8,6 +8,10 @@ import Home from "./components/HomeSearch";
 import Search from './components/Search/search';
 import ViewTrip from './components/ShowList/ViewTrip';
 import ViewMyTrips from './components/ShowList/ViewMyTrips';
+import cityCHI from './components/Search/cityCHI'
+import cityNY from './components/Search/cityNY'
+import citySD from './components/Search/citySD'
+import citySeattle from './components/Search/citySeattle'
 
 export default class RouterWrap extends Component {
     constructor(props) {
@@ -45,6 +49,10 @@ export default class RouterWrap extends Component {
                         <Route path="/search" component={Search} />
                         <Route path="/viewtrip" component={ViewTrip} />
                         <Route path="/viewmytrips" component={ViewMyTrips} />
+                        <Route path="/cityChi" component={cityCHI} />
+                        <Route path="/cityNY" component={cityNY} />
+                        <Route path="/citySD" component={citySD} />
+                        <Route path="/citySeattle" component={citySeattle} />
                     </Switch>
                 </HashRouter>
             </div>
