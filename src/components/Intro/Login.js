@@ -17,6 +17,7 @@ class Login extends React.Component {
         this.state = {
             email: '',
             password:'',
+            sessionUsername:'',
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
@@ -48,10 +49,11 @@ class Login extends React.Component {
     }
 
     handleInput(field) {
-        return (e) => this.setState({[field]: e.target.value});
+        return (e) => this.setState({ [field]: e.target.value });
     }
+
     handleLogin(e) {
-        const [email] = "sessionCookie";
+        const [email] = this.state.email;
         e.preventDefault();
         setSessionCookie({ email });
         // $.ajax({
@@ -120,15 +122,10 @@ class Login extends React.Component {
             <div className="login">
                 <Header />
                 <div className="box-container">
-
                     <form className={classes.root} noValidate autoComplete="off">
                         <Grid container alignItems="center" justify="center" direction="column">
                             <Grid item xs={12}>
                                 <Paper className={classes.paper}>
-
-                                    <Button type="submit" onClick={this.setUsername}>Add to Session(cookie)</Button>
-
-
                                     <TextField
                                         required
                                         id="email"
