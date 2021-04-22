@@ -9,7 +9,6 @@ import Paper from "@material-ui/core/Paper"
 import axios from "axios";
 import $ from 'jquery';
 import {Redirect} from 'react-router-dom';
-import {setSessionCookie} from './Session';
 
 class Login extends React.Component {
     constructor(props) {
@@ -73,7 +72,8 @@ class Login extends React.Component {
             method: 'GET',
             headers: {
                 "Authorization": 'Basic ' + window.btoa(this.state.email + ":" + this.state.password)
-            }
+            },
+
         }).then(resp => {
             console.log(resp);
             if (resp.ok) {

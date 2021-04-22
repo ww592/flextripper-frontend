@@ -15,8 +15,7 @@ class Register extends Component {
         super(props);
         this.state = {
             email: '',
-            firstname: '',
-            lastname: '',
+            username: '',
             password: '',
         }
         this.handleInput = this.handleInput.bind(this);
@@ -30,27 +29,16 @@ class Register extends Component {
 
     handleRegisterClick(e) {
         e.preventDefault();
-        const data = JSON.stringify({
-            email: this.state.email,
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            password: this.state.password,
-        });
-
-        fetch("http://localhost:8080/register", {
+        const { email, username, password } = this.state;
+        fetch('/register' , {
+            method: "POST",
             headers: {
-                "Authorization": 'Basic ' + window.btoa(this.state.email + ":" + this.state.password + this.state.firstname + this.state.lastname)
-            }
-        }).then(resp => {
-            console.log(resp);
-            if (resp.ok) {
-                this.props.history.push("/home");
-                // this.setState({isLoginSucces: true});
-            } else {
-                // this.setState({isLoginSucces: false});
-            }
-            return resp.text();
-        });
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+            .then((result) => result.json())
+            .then((info) => { console.log(info); })
 
         // $.ajax({
         //     url: '/register.json',
@@ -113,43 +101,28 @@ class Register extends Component {
             <div className="register">
                 <Header />
                 <div className="box-container">
-                    <form className={classes.root} noValidate autoComplete="off"
-                    onSubmit={this.handleRegisterClick}>
+                    <form className={classes.root}
+                          noValidate autoComplete="off"
+                          onSubmit={this.handleRegisterClick}
+                          method="POST" action="/register">
                         <Grid container
                               alignItems="center"
                               justify="center"
-                              direction="row">
+                              direction="column">
 
                             <TextField
                                 required
-                                label="First name"
+                                label="Username"
                                 style={{ margin: 10 }}
-                                id="firstname"
+                                id="username"
                                 className={classes.textField}
                                 margin="normal"
                                 variant="outlined"
-                                onChange={this.handleInput('firstname')}
+                                onChange={this.handleInput('username')}
                                 value={this.state.firstname}
 
                             />
-
-                            <TextField
-                                required
-                                label="Last name"
-                                style={{ margin: 10 }}
-                                id="lastname"
-                                className={classes.textField}
-                                variant="outlined"
-                                onChange={this.handleInput('lastname')}
-                                value={this.state.lastname}
-
-                            />
-
-                        </Grid>
-                        <Grid container
-                              alignItems="center"
-                              justify="center"
-                              direction="row">
+                            <br />
                             <TextField
                                 required
                                 label="Email"
@@ -159,9 +132,8 @@ class Register extends Component {
                                 variant="outlined"
                                 onChange={this.handleInput('email')}
                                 value={this.state.email}
-
                             />
-
+                            <br />
                             <TextField
                                 required
                                 style={{ margin: 10 }}
@@ -171,9 +143,7 @@ class Register extends Component {
                                 variant="outlined"
                                 onChange={this.handleInput('password')}
                                 value={this.state.password}
-
                             />
-
                         </Grid>
                         <Grid container alignItems="center" justify="center" direction="row">
                             <StyledButton variant="contained"
