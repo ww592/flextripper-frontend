@@ -24,45 +24,40 @@ class Register extends Component {
 
 
     handleInput(field) {
-        return (e) => this.setState({ [field]: e.target.value });
+        return (e) => this.setState({[field]: e.target.value});
     }
 
     handleRegisterClick(e) {
         e.preventDefault();
-        const { email, username, password } = this.state;
-        fetch('/register' , {
+        const {email, username, password} = this.state;
+        const data = {
+            email: this.state.email,
+            username: this.state.username,
+            password: this.state.password,
+            userRole: null,
+            enabled: true,
+            history: null
+        };
+
+        fetch('/process_register', {
             method: "POST",
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify(this.state)
-        })
-            .then((result) => result.json())
-            .then((info) => { console.log(info); })
+            body: JSON.stringify(data)
+        }).then(resp => {
+            console.log(resp);
+            if (resp.ok) {
+                this.props.history.push("/login");
+            } else {
 
-        // $.ajax({
-        //     url: '/register.json',
-        //     data: data,
-        //     type: 'POST',
-        //     success: (res) => {
-        //         console.log(data)
-        //     },
-        //     error: (err) => {
-        //         console.log(err)
-        //     }
-        // });
-        // <Redirect to="/home" />;
-
-        // axios
-        //     .post("http://localhost:8080/user", data)
-        //     .then(response => this.setState({
-        //         user: response.data,
-        //     }))
-        //     .catch(err => console.log(err));
+            }
+            return resp.text();
+        });
     };
 
     render() {
-        const { user } = this.props;
+        const {user} = this.props;
         const StyledButton = withStyles({
             root: {
                 background: '#fe706b',
@@ -99,7 +94,7 @@ class Register extends Component {
 
         return (
             <div className="register">
-                <Header />
+                <Header/>
                 <div className="box-container">
                     <form className={classes.root}
                           noValidate autoComplete="off"
@@ -113,7 +108,7 @@ class Register extends Component {
                             <TextField
                                 required
                                 label="Username"
-                                style={{ margin: 10 }}
+                                style={{margin: 10}}
                                 id="username"
                                 className={classes.textField}
                                 margin="normal"
@@ -122,21 +117,21 @@ class Register extends Component {
                                 value={this.state.firstname}
 
                             />
-                            <br />
+                            <br/>
                             <TextField
                                 required
                                 label="Email"
-                                style={{ margin: 10 }}
+                                style={{margin: 10}}
                                 id="email"
                                 className={classes.textField}
                                 variant="outlined"
                                 onChange={this.handleInput('email')}
                                 value={this.state.email}
                             />
-                            <br />
+                            <br/>
                             <TextField
                                 required
-                                style={{ margin: 10 }}
+                                style={{margin: 10}}
                                 id="password"
                                 label="Password"
                                 type="password"
@@ -147,7 +142,7 @@ class Register extends Component {
                         </Grid>
                         <Grid container alignItems="center" justify="center" direction="row">
                             <StyledButton variant="contained"
-                                          style={{ margin: 20 }}
+                                          style={{margin: 20}}
                                           type="submit"
                                           onClick={this.handleRegisterClick}
                                           user={user}
@@ -157,10 +152,11 @@ class Register extends Component {
                         </Grid>
                     </form>
                 </div>
-                <Footer />
+                <Footer/>
             </div>
         );
     }
 }
+
 
 export default Register;

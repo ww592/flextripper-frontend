@@ -25,13 +25,11 @@ class Login extends React.Component {
     }
 
     /*TEST*/
-
     setUsername(e) {
         e.preventDefault();
 
         fetch("/auth", {
             credentials: 'include',
-            // credentials: "same-origin",
             headers: {
                 // "Authorization": 'Basic ' + window.btoa(this.state.email + ":" + this.state.password)
             }
@@ -51,22 +49,7 @@ class Login extends React.Component {
     }
 
     handleLogin(e) {
-        // const [email] = this.state.email;
         e.preventDefault();
-        // setSessionCookie({ email: "test@gmail.com" });
-        // $.ajax({
-        //     url: '/login.json',
-        //     data: data,
-        //     type: 'POST',
-        //     success: (res) => {
-        //         console.log(data)
-        //     },
-        //     error: (err) => {
-        //         console.log(err)
-        //     }
-        // });
-
-
         fetch("/login", {
             credentials: 'include',
             method: 'GET',
@@ -84,7 +67,6 @@ class Login extends React.Component {
             }
             return resp.text();
         });
-
     };
 
 
