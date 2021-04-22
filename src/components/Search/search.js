@@ -11,6 +11,7 @@ import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import { debounce } from 'lodash';
 import Destination from '../ShowList/Destination';
+import YourTrip from '../ShowList/YourTrip'
 
 // 只有一個 Wrapper 所以沒有額外建一個 Styled Setting
 export const Wrapper = styled.div`
@@ -230,6 +231,9 @@ const Search = () => {
                 <Grid container spacing={4}>
                     <Grid item xs={6}>
                         <Grid container>
+                            <Grid item xs={12}>
+                                <YourTrip />
+                            </Grid>
                             <Grid item xs={1} />
                             <Grid item xs={11}>
                                 {/*<AutoComplete/>*/}
@@ -255,6 +259,7 @@ const Search = () => {
                                 </div>
                                 <Box />
                             </Grid>
+
                             <Grid item xs={12}>
                                 <Wrapper>
                                     {isReading && <LocationDetails details={details} closeDetail={closeDetail} addPoint={addPoint} />}
@@ -270,11 +275,15 @@ const Search = () => {
                                     />
                                 </Wrapper>
                             </Grid>
+
                         </Grid>
                     </Grid>
 
                     <Grid item xs={6}>
                         <Grid container>
+                            <Grid item xs={12}>
+                                <Destination />
+                            </Grid>
                             <Grid item xs={12}>
                                 <List
                                     mapInstance={mapInstance}
@@ -285,13 +294,9 @@ const Search = () => {
                                     listClick = {listClick}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
-                                <Destination />
-                            </Grid>
+
                         </Grid>
                     </Grid>
-
-
                 </Grid>
             </div>
         </div>

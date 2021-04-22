@@ -14,8 +14,7 @@ import chi from "../assets/images/chi.jpeg";
 import nyc from "../assets/images/nyc.jpeg";
 import sd from "../assets/images/sd.jpeg";
 import stl from "../assets/images/stl.jpeg";
-import Autofill from './Search/Autofill'
-import $ from 'jquery'
+import $ from 'jquery';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -155,7 +154,6 @@ export default function HomeSearch() {
         <div className="home">
             <HeaderSearch />
             <Grid container={classes.root}></Grid>
-
 
             <div className="home-search" style={{opacity: 0.7,backgroundImage:`url(${travel})`}} >
                 <div className={classes.root} />

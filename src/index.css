@@ -5,9 +5,7 @@
 @import "./styles/Footer.css";
 @import "./styles/App.css";
 @import "./styles/Home/Home.css";
-@import "./styles/Main2/TripList.css";
-@import "./styles/Main2/ViewMyTrips.css";
-@import "./styles/Main2/YourTrip.css";
+@import "./styles/Main2/ListStyle.css";
 
 body {
   margin: 0;

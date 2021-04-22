@@ -20,29 +20,29 @@ class Login extends React.Component {
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
-        this.setUsername = this.setUsername.bind(this);
+        // this.setUsername = this.setUsername.bind(this);
 
     }
 
     /*TEST*/
-    setUsername(e) {
-        e.preventDefault();
-
-        fetch("/auth", {
-            credentials: 'include',
-            headers: {
-                // "Authorization": 'Basic ' + window.btoa(this.state.email + ":" + this.state.password)
-            }
-        }).then(resp => {
-            console.log(resp);
-            console.log(document.cookie);
-            if (resp.ok) {
-                console.log("cookie:")
-            } else {
-            }
-            return resp.text();
-        });
-    }
+    // setUsername(e) {
+    //     e.preventDefault();
+    //
+    //     fetch("/auth", {
+    //         credentials: 'include',
+    //         headers: {
+    //             // "Authorization": 'Basic ' + window.btoa(this.state.email + ":" + this.state.password)
+    //         }
+    //     }).then(resp => {
+    //         console.log(resp);
+    //         console.log(document.cookie);
+    //         if (resp.ok) {
+    //             console.log("cookie:")
+    //         } else {
+    //         }
+    //         return resp.text();
+    //     });
+    // }
 
     handleInput(field) {
         return (e) => this.setState({ [field]: e.target.value });
@@ -103,7 +103,7 @@ class Login extends React.Component {
                         <Grid container alignItems="center" justify="center" direction="column">
                             <Grid item xs={12}>
                                 <Paper className={classes.paper}>
-                                    <button type="submit" onClick={this.setUsername}>Add to Session(cookie)</button>
+                                    {/*<button type="submit" onClick={this.setUsername}>Add to Session(cookie)</button>*/}
                                     <TextField
                                         required
                                         id="email"

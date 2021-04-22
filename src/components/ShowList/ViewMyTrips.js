@@ -24,7 +24,6 @@ export const Wrapper = styled.div`
   margin: 0;
   padding: 0;
 `
-
 const ViewTrip = () => {
     const [defaultCenter, setDefaultCenter] = useState({
         lat: 34.02,
@@ -281,22 +280,21 @@ const ViewTrip = () => {
                         </Grid>
                     </Grid>
 
-                    <Grid item xs={12}>
+                    <Grid item xs={6}>
                         <Grid container>
-                            <div>
+                            <Grid item xs={12}>
                                 <Button>
-                                    <Link to="/">Edit the trip</Link>
+                                    <Link to="/search">Edit the trip</Link>
                                 </Button>
-                                <Card className="cards" bordered={true} style={{ width: 300 }}>
+                                <Card className="cards" bordered={false} style={{ width: 300 }}>
                                     <header>Trips</header>
                                     <Trips listItems={listItems} className="trips" />
                                 </Card>
-                                </div>
-
+                            </Grid>
 
                         </Grid>
                     </Grid>
-                    <Destination />
+
 
                 </Grid>
             </div>

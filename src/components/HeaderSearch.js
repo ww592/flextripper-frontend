@@ -50,9 +50,11 @@ export default function HeaderSearch() {
             <AppBar position="static">
                     <header className="App-header">
                         <img src={logo} className="App-logo" alt="logo" />
+                        <Link to="/Home" style={{ textDecoration: 'none', color: '#d64741'}}>
                         <p className="title">
                             FlexTripper
                         </p>
+                        </Link>
                         <Typography variant="h6" className={classes.title} />
 
                         <div>
@@ -99,7 +101,6 @@ export default function HeaderSearch() {
                             <Typography variant="h6" className={classes.title} />
                         </div>
                     </header>
-
             </AppBar>
         </div>
     );
